@@ -1,1 +1,65 @@
+#include <stdio.h>
+#include <stdlib.h>
+#include <string.h>
 
+  struct employee{
+    char name[50];
+    int id;
+    float salary;
+    int attendence;
+    float bonus;
+    float gross_salary;
+    char category[50];
+};
+
+int main()
+  {
+    struct employee emp;
+    printf("Enter the name :\n");
+    scanf("%s",emp.name);
+    printf("Enter the id: \n");
+    scanf("%d",&emp.id);
+    printf("Enter the salary : \n");
+    scanf("%f",&emp.salary);
+     printf("Enter the days you worked: \n");
+    scanf("%d",&emp.attendence);
+    
+    
+    if(emp.attendence>25)
+    {
+        emp.bonus=(emp.salary/100.0f)*50.0f;
+    }
+    else if(emp.attendence<10)
+    {
+        emp.bonus=-1.0f*(emp.salary / 100.0f)*50.0f;
+    }
+   else
+   {
+       emp.bonus=0;
+   }
+   
+    emp.gross_salary = emp.salary + emp.bonus;
+    if(emp.attendence>25){
+        strcpy(emp.category,"excellent");
+    }
+    else if(emp.attendence<15){
+        strcpy(emp.category,"need improvement");
+    }
+    else{
+        strcpy(emp.category,"good");
+    }
+     printf("name : %s \n",emp.name);
+    printf("id : %d\n",emp.id);
+    printf("salary %f\n",emp.salary);
+    printf("attendence %d \n",emp.attendence);
+    if(emp.bonus > 0)
+    {
+        printf("bonus :%f \n",emp.bonus);
+        
+    }
+    
+    printf("final salary :%f \n",emp.gross_salary);
+    printf("employee performance category: %s \n",emp.category);
+    return 0;
+    
+  }
